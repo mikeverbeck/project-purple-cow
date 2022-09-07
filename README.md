@@ -1,24 +1,11 @@
 # README
+Project Purple Cow - Fearless Trial Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+See also [solution.md](solution.md)
 
-Things you may want to cover:
+# Get Started
+`bundle install`
 
-* Ruby version
+`bundle exec rails s`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Open a browser to http://localhost:3000
