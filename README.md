@@ -13,3 +13,11 @@ See also [solution.md](solution.md)
 `bundle exec rails s`
 
 Open a browser to http://localhost:3000
+
+
+# Running with Docker
+`docker build -t project-purple-cow .`
+
+`docker run -p 3000:3000 -d project-purple-cow`
+
+Open a browser to http://localhost:3000
