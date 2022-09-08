@@ -24,7 +24,15 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    item.update!(item_params)
+    respond_to do |format|
+      if item.update!(item_params)
+        format.html { redirect_to item_path(item), notice: 'Item was successfully updated.' }
+        format.json { render :json => item}
+      else
+        format.html { render :edit }
+        format.json { render :json => {errors: item.errors}, status: :unprocessable_entity }
+      end
+    end
   end
 
   def new
@@ -33,17 +41,28 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to @item
-    else
-      render 'new'
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.json { render :json => @item}
+      else
+        format.html { render :new }
+        format.json { render :json => {errors: @item.errors}, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to items_path
+    respond_to do |format|
+      if @item.destroy
+        format.html { redirect_to items_path, notice: 'Item was successfully destroyed.' }
+        format.json { render :json => @item}
+      else
+        format.html { render :show }
+        format.json { render :json => {errors: @item.errors}, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
