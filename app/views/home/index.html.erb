@@ -1,3 +1,64 @@
-<div class="row">
+<div class="row mt-5 text-center">
   <h1 class="display-1 text-center">Project Purple Cow</h1>
+  <p>Welcome to project purple cow where items are endless! Reference the api documentation below or browse our items <%=link_to "here", items_path %></p>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <div class="row pb-5">
+          <h2>Items</h2>
+          <p>Items are the main resource of this API. They have a name, id, created_at, and updated_at attributes.</p>
+          <h5>List Items</h5>
+          <%=link_to "GET /items", items_path %>
+          <div class="row">
+            <code>
+              curl -X GET -H "Accept: application/json" http://localhost:3000/items
+            </code>
+          </div>
+        </div>
+
+        <div class="row pb-5">
+          <h5>Show Item</h5>
+          <%=link_to "GET /items/:id", item_path(1) %>
+          <div class="row">
+            <code>
+              curl -X GET -H "Accept: application/json" http://localhost:3000/items/1
+            </code>
+          </div>
+        </div>
+
+        <div class="row pb-5">
+          <h5>Create Item</h5>
+          <%=link_to "POST /items", new_item_path %>
+          <div class="row">
+            <code>
+              curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"item": {"name": "New Item"}}' http://localhost:3000/items
+            </code>
+          </div>
+        </div>
+
+        <div class="row pb-5">
+          <h5>Update Item</h5>
+          <%=link_to "PATCH /items/:id", edit_item_path(1) %>
+          <div class="row">
+            <code>
+              curl -X PATCH -H "Accept: application/json" -H "Content-Type: application/json" -d '{"name": "New Name"}' http://localhost:3000/items/1
+            </code>
+          </div>
+        </div>
+
+        <div class="row pb-5">
+          <h5>Delete Item</h5>
+          <%=link_to "DELETE /items/:id", item_path(1), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <div class="row">
+            <code>
+              curl -X DELETE -H "Accept: application/json" http://localhost:3000/items/1
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
